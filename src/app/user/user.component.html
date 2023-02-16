@@ -1,0 +1,49 @@
+<div style="text-align: center;">
+    <h1>User Details...!</h1>
+</div>
+<div style="text-align: center;">
+   
+   <form [formGroup]="userForm" (ngSubmit)="onSubmitUserForm()">
+   <div style="margin-top: 10px;">
+     User Name:-<input type="text" formControlName="userName">
+   </div>
+   <div style="margin-top: 10px;">
+     Password:-<input type="text" formControlName="password">
+   </div>
+   <div style="margin-top: 10px;">
+   Profile Image:<input type="file" (change)="onSelectProfileImage($event)">
+   <img [src]="profSrc" height="100px" width="100px" [hidden]="!profSrc">
+   </div>
+   <div style="margin-top: 10px;">
+    Aadhar Image:-<input type="file" (change)="onSelectAadharImage($event)">
+    <img [src]="aadharSrc" height="100px" width="100px" [hidden]="!aadharSrc">
+   </div>
+   <div style=" margin-top: 10px;">
+     Pancard  Image:<input type="file" (change)="onSelectPanCradImage($event)">
+     <img [src]="panSrc" height="100px" width="100px" [hidden]="!panSrc">
+   </div>
+   <div style="margin-top: 10px;" >
+<button>Submit Details</button>
+   </div>
+</form>
+<div style="margin-top: 10px;" >
+ <button (click)="getUsers()">Get Users Details</button>
+</div>
+<div *ngFor="let u of users">
+  {{u.userId}}<br>
+  {{u.userName}}<br>
+  {{u.password}}<br>
+  <!-- {{u.profileImage}}<br>
+  {{u.adharCard}}<br>
+
+  {{u.panCard}}<br> -->
+<img [src]="'data:Image/jpeg;base64,'+u.profileImage" height="100px" width="100px">
+&nbsp; &nbsp;&nbsp;&nbsp;
+<img [src]="'data:Image/jpeg;base64,'+u.adharCard" height="100px" width="100px">
+&nbsp; &nbsp;&nbsp;&nbsp;
+<img [src]="'data:Image/jpeg;base64,'+u.panCard" height="100px" width="100px">
+&nbsp; &nbsp;&nbsp;&nbsp;
+
+
+</div>
+</div>
